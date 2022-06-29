@@ -6,3 +6,8 @@
 ### 서브 페이지 - 2page
 
 ### 준비물 리스트 - 3page
+
+### 참고
+- Git commit convention 
+  - 링크 내용처럼 Git commit convention도 지켜가며 commit 연습
+  - https://velog.io/@archivvonjang/Git-Commit-Message-Convention
