@@ -231,7 +231,7 @@
                 url: "/travel/supplies",
                 data: { num_give: num },
                 success: function (response) {
-                    let rows = response['supplies']
+                    let rows = response['supplieslist']
                     $('#supplies-list').html('')
 
                     for (let i = 0; i < rows.length; i++) {
@@ -252,6 +252,7 @@
                             temp_html = `
                     <li>
                         <h2 class="done">✅ ${supplies}</h2>
+                        <button onclick="done_supplies(${currentNum}, ${index})" type="button" class="btn btn-outline-primary">완료!</button>
                     </li>
                     `
                         }
