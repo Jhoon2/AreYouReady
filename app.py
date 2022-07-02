@@ -7,7 +7,7 @@ import certifi
 app = Flask(__name__)
 
 ca = certifi.where()
-client = MongoClient('mongodb+srv://test:sparta@cluster0.xaxuh.mongodb.net/?retryWrites=true&w=majority', tlsCAFile=ca)
+client = MongoClient('mongodb+srv://test:testdb@cluster0.ej5hjgf.mongodb.net/Cluster0?retryWrites=true&w=majority', tlsCAFile=ca)
 db = client.dbsparta
 
 @app.route('/')
@@ -98,16 +98,27 @@ def supplies_done():
 @app.route("/supplies/delete", methods=["POST"])
 def supplies_delete():
     index_receive = request.form['index_give']
-    num_receive = request.form['currentnum_give']
-    print(index_receive, num_receive)
-    db.supplies.delete_one({ "$and": [{'num': int(num_receive)}, {'supplieslist.index': int(index_receive)}]})
+    num_receive = request.form['currentNum_give']
+    db.travels.update_one({'num': int(num_receive)}, {'$pull': {'supplieslist': {'index': int(index_receive)}}})
+
+    travel_list = db.travels.find_one({'num': int(num_receive)})
+    print(travel_list['supplieslist'])
+    reset_num = len(travel_list['supplieslist'])
+
+    for x in range(reset_num):
+        travel_list['supplieslist'][x]['index'] = (x + 1)
+
+    db.travels.update_one({'num': int(num_receive)}, {'$set': {'supplieslist': []}})
+    db.travels.update_one({'num': int(num_receive)}, {'$addToSet': {'supplieslist': {'$each': travel_list['supplieslist']}}})
     return jsonify({'msg': '삭제 완료!'})
 
 
 
 @app.route("/supplies/all_delete", methods=["POST"])
 def delete_all():
-    db.supplies.delete_many({})
+    num_receive = request.form['currentNum_give']
+
+    db.travels.update_one({'num': int(num_receive)}, {'$set': {'supplieslist': []}})
     return jsonify({'msg': '전체 삭제 완료!'})
 
 
@@ -123,7 +134,7 @@ def comment_post():
 
 
 if __name__ == '__main__':
-    app.run('0.0.0.0', port=3000, debug=True)
+    app.run('0.0.0.0', port=3001, debug=True)
 
 
 
