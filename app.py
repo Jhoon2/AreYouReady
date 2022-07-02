@@ -7,7 +7,7 @@ import certifi
 app = Flask(__name__)
 
 ca = certifi.where()
-client = MongoClient('개인URL', tlsCAFile=ca)
+client = MongoClient('mongodb+srv://text:sparta@cluster0.nopx1rc.mongodb.net/Cluster0?retryWrites=true&w=majority', tlsCAFile=ca)
 db = client.dbsparta
 
 @app.route('/')
@@ -17,6 +17,10 @@ def home():
 @app.route('/2PAGE')
 def page_1():
     return render_template('2PAGE.html')
+
+@app.route('/1PAGE')
+def page_2():
+    return render_template('1PAGE.html')
 
 @app.route("/travel", methods=["POST"])
 def travel_write():
