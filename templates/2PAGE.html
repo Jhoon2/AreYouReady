@@ -36,7 +36,12 @@ div {
 
 .mytitle {
     width: 100%;
-    height: 250px;
+    height: 550px;
+    border-radius: 0px 0px 15px 15px;
+
+    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://a.cdn-hotels.com/gdcs/production189/d714/2c6115c1-182b-4244-af22-3df48215b86b.jpg');
+    background-position: center;
+    background-size: cover;
 
     color: white;
 
@@ -44,11 +49,6 @@ div {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
-    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://a.cdn-hotels.com/gdcs/production189/d714/2c6115c1-182b-4244-af22-3df48215b86b.jpg');
-    background-position: center;
-    background-size: cover;
-
 }
 
 
@@ -64,7 +64,7 @@ div {
     border: 1px solid white;
 
     margin:0 auto;
-    margin-top: 10px;
+    margin-top: 40px;
 }
 
 .logo-div > button:hover {
@@ -86,6 +86,7 @@ div {
     color: gray;
 }
 
+
 .mycards {
     margin: 20px auto 0px auto;
     width: 95%;
@@ -94,7 +95,7 @@ div {
 
 .mypost {
     width: 95%;
-    max-width: 500px;
+    max-width: 700px;
     margin: 20px auto 0px auto;
     padding: 20px;
     box-shadow: 0px 0px 3px 0px gray;
@@ -267,7 +268,7 @@ function show_supplies(num) {
       let rows = response["supplieslist"];
       $("#supplies-list").html("");
       let modal_title = response["modal-title"];
-      document.querySelector(".modal-title").innerText = modal_title;
+      document.querySelector(".modal-title").innerText = modal_title + " 에서 가져가야할것들!";
 
       for (let i = 0; i < rows.length; i++) {
         let supplies = rows[i]["supplies"];
@@ -476,8 +477,8 @@ function modal_input_box(num) {
                 <div id="suppliesInput">
                     <div class="mybox">
                         <div class="mysupplies">
-                            <input id="supplies-1" class="form-control" type="text" onkeyup="if(window.event.keyCode==13){save_supplies()}" placeholder="이루고 싶은 것을 입력하세요">
-                            <button onclick="save_supplies()" type="button" class="btn btn-outline-primary">기록하기
+                            <input id="supplies-1" class="form-control" type="text" onkeyup="if(window.event.keyCode==13){save_supplies()}" placeholder="준비물을 입력해주세요!">
+                            <button onclick="save_supplies()" type="button" class="btn btn-outline-primary">입력하기
                             </button>
                         </div>
                     </div>
@@ -487,7 +488,7 @@ function modal_input_box(num) {
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
             </div>
         </div>
     </div>
