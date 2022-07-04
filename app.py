@@ -116,39 +116,6 @@ def supplies_delete():
     db.travels.update_one({'num': int(num_receive)}, {'$addToSet': {'supplieslist': {'$each': travel_list['supplieslist']}}})
     return jsonify({'msg': '삭제 완료!'})
 
-# @app.route("/supplies/delete", methods=["POST"])
-# def supplies_delete():
-#     num_receive = request.form['currentNum_give']  # 사진 값 / 사진이 생성되면 각 사진의 데이터베이스 요소 중 하나인
-#     # num이 1씩 늘어나면서 데이터에 저장됨
-
-#     index_receive = request.form['index_give']  # 각 사진 안에서 리스트 하나하나의 값
-#     print(index_receive, num_receive)
-
-#     db.travels.update_one({'num': int(num_receive)}, {'$pull': {'supplieslist': {'index': int(index_receive)}}})
-#     # 사진의 num값에 해당하면서 동시에 클릭한 리스트의 index값을 pull로 없애버림
-    
-
-#     for x in range(15):
-#         db.travels.update_one({"$and": [{'num': int(num_receive)}, {'supplieslist.index': int(index_receive) + (x + 1)}]},
-#         {'$set': {'supplieslist.$.index': int(index_receive) + x}})
-#     # 여기서 업데이트 된부분 보다 큰 index값을 가진 supplieslist들의 index를 하나씩 -1 해줌
-
-#     # print(db.travel.find())
-
-#     # db.travles.remove({'num': int(num_receive)})
-#     # db.travels.delete_one({'num': int(num_receive)})['supplieslist'][int(index_receive) - 1]
-#     # print(test_1)
-#     # db.supplies.update_one({'num': int(num_receive)}, {'$pull': {'supplieslist': {'index': int(index_receive)}}})
-#     # db.travels.delete_one({'num': int(num_receive)})['supplieslist'][int(index_receive) - 1]
-#     # print(test)
-#     # db.travels.delete_one({"$and": [{'num': int(num_receive)}, {'supplieslist.index': int(index_receive)}]})
-#     # db..delete_one({'num': int(num_receive)})['supplieslist'][0]
-#     # print(test)
-#     # test.delete_one({'index': int(num_receive)-1})
-#     # print(db.travels.find_one({'index': int(index_receive) - 1}))
-#     # db.travels.delete_one({'num': int(num_receive)})['supplieslist'][int(index_receive) - 1]
-#     return jsonify({'msg': '삭제 완료!', 'num': int(num_receive), 'index': int(index_receive)})
-
 
 
 @app.route("/supplies/all_delete", methods=["POST"])
