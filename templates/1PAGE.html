@@ -5,181 +5,104 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <link rel="stylesheet" href="../static/js/1PAGE.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-            crossorigin="anonymous"></script>
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
 
     <title>준비됐나?</title>
+
+
+    <style>
+
+    </style>
+
+    <script>
+
+    </script>
 </head>
-
-<style>
-    @font-face {
-        font-family: -윤고딕330;
-        src: url("/static/font/윤고딕330.woff") format('woff');
-    }
-
-    * {
-        font-family: -윤고딕330;
-    }
-
-    .img-box {
-        width: 100%;
-        height: 100vh;
-    }
-
-    .img-main {
-        width: 100%;
-        height: 100%;
-        list-style: none;
-
-        background-image: url("../static/img/배경.png");
-        background-size: cover;
-        background-position: center;
-        overflow: auto;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        text-align: center;
-    }
-
-    .logo-box {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        text-align: center;
-    }
-
-
-    .img-logo {
-        width: 25%;
-        height: 350px;
-        margin: 0 auto;
-    }
-
-    .btn-div {
-        display: flex;
-        justify-content: space-evenly;
-    }
-
-    .btn-div > div {
-        width: 20%;
-        display: flex;
-        flex-direction: column;
-    }
-
-    .btn-div > div > p {
-        color: rgb(0, 0, 0);
-        font-weight: bolder;
-        font-size: 20px;
-        border: 3px solid rgb(255, 255, 255);
-        border-radius: 10px;
-        background-color: rgb(255, 255, 255);
-        width: 70%;
-        margin: 0 auto;
-    }
-
-    .btn-div > div > button :hover {
-        width: 50%;
-    }
-
-
-    .tem {
-        font-size: 20px;
-        font-weight: bolder;
-        color: rgb(0, 0, 0);
-    }
-
-
-    @media (max-width: 800px) {
-        .img-logo {
-            width: 50%;
-        }
-    }
-
-
-    @media (max-width: 600px) {
-        .img-logo {
-            width: 80%;
-        }
-
-        .btn-div > div > p {
-            width: 20%;
-            font-size: 15px;
-        }
-
-        .btn-div > div > button > img {
-            width: 100%;
-        }
-    }
-</style>
-
-<script>
-    $(document).ready(function () {
-
-        $.ajax({
-            type: "GET",
-            url: "http://spartacodingclub.shop/sparta_api/weather/seoul",
-            data: {},
-            success: function (response) {
-                let temp = response['temp']
-                $('#temp').text(temp)
-            }
-        })
-    });
-
-
-</script>
-
 
 <body>
 
-<div class="img-box">
-    <div class="img-main">
-        <div class="title-box">
-            <div class="logo-box">
-                <img class="img-logo" src="../static/img/로고.png">
-                <p class="tem">현재기온 : <span id="temp">00.0</span>도</p>
-            </div>
-        </div>
-
-        <div class="btn-div">
-            <div>
-                <button class="btn" id="cam"><img onclick="location.href='/2PAGE'" src="/static/img/텐트.png">
-                </button>
-                <p class="name">글램핑, 캠핑</p>
+    <div class="img-box">
+        <div class="img-main">
+            <div class="title-box">
+                <div class="logo-box">
+                    <img class="img-logo" src="../static/img/로고.png">
+                    <p class="tem">현재기온 : <span id="temp">00.0</span>도</p>
+                </div>
             </div>
 
-            <div>
-                <button class="btn" id="fas" onclick="location. href='/2PAGE'"><img src="/static/img/페스티벌.png"></button>
-                <p class="name">페스티벌</p>
-            </div>
 
-            <div>
-                <button class="btn" id="trip" onclick="location. href='/2PAGE'"><img src="/static/img/여행.png"></button>
-                <p class="name">여행</p>
-            </div>
 
-            <div>
-                <button class="btn" id="hik" onclick="location. href='/2PAGE'"><img src="/static/img/등산.png"></button>
-                <p class="name">등산, 외박</p>
-            </div>
+            <div class="btn-div">
+                <div id="navMBtn">
+                    <a class="menu-trigger" style="cursor:pointer;">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </a>
+                    <!-- <div class="list-group"> -->
+                    <ul class="list-group">
+                        <li class="list-group-item" onclick="location.href='/2PAGE'"
+                            style="display:flex; justify-content: space-between;"><img style="width:30px;"
+                                src="/static/img/텐트.png"><span style="margin-left:30px;">글램핑, 캠핑</span></li>
+                        <li class="list-group-item" onclick="location.href='/2PAGE'"
+                            style="display:flex; justify-content: space-between;"><img style="width:30px;"
+                                src="/static/img/페스티벌.png"><span style="margin-left:30px;">페스티벌</span></li>
+                        <li class="list-group-item" onclick="location.href='/2PAGE'"
+                            style="display:flex; justify-content: space-between;"><img style="width:30px;"
+                                src="/static/img/여행.png"><span style="margin-left:30px;">여행</span></li>
+                        <li class="list-group-item" onclick="location.href='/2PAGE'"
+                            style="display:flex; justify-content: space-between;"><img style="width:30px;"
+                                src="/static/img/등산.png"><span style="margin-left:30px;">등산, 외박</span></li>
+                        <li class="list-group-item" onclick="location.href='/2PAGE'"
+                            style="display:flex; justify-content: space-between;"><img style="width:30px;"
+                                src="/static/img/물놀이.png"><span style="margin-left:30px;">물놀이</span></li>
+                    </ul>
+                    <!-- </div> -->
+                </div>
 
-            <div>
-                <button class="btn" id="water" onclick="location. href='/2PAGE'"><img src="/static/img/물놀이.png">
-                </button>
-                <p class="name">물놀이</p>
+                <div>
+                    <button class="btn" id="cam"><img onclick="location.href='/2PAGE'" src="/static/img/텐트.png">
+                    </button>
+                    <p class="name">글램핑, 캠핑</p>
+                </div>
+
+                <div>
+                    <button class="btn" id="fas" onclick="location. href='/2PAGE'"><img
+                            src="/static/img/페스티벌.png"></button>
+                    <p class="name">페스티벌</p>
+                </div>
+
+                <div>
+                    <button class="btn" id="trip" onclick="location. href='/2PAGE'"><img
+                            src="/static/img/여행.png"></button>
+                    <p class="name">여행</p>
+                </div>
+
+                <div>
+                    <button class="btn" id="hik" onclick="location. href='/2PAGE'"><img
+                            src="/static/img/등산.png"></button>
+                    <p class="name">등산, 외박</p>
+                </div>
+
+                <div>
+                    <button class="btn" id="water" onclick="location. href='/2PAGE'"><img src="/static/img/물놀이.png">
+                    </button>
+                    <p class="name">물놀이</p>
+                </div>
             </div>
         </div>
 
     </div>
 
 
-</div>
 
+    <script type="text/javascript" src="../static/js/1PAGE.js"></script>
 </body>
 
 </html>
