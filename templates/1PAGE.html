@@ -16,109 +16,13 @@
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
             crossorigin="anonymous"></script>
 
+    <link rel="stylesheet" href="../static/1page.css" type="text/css">
+
     <title>준비됐나?</title>
 </head>
 
 <style>
-    @font-face {
-        font-family: -윤고딕330;
-        src: url("/static/font/윤고딕330.woff") format('woff');
-    }
 
-    * {
-        font-family: -윤고딕330;
-    }
-
-    .img-box {
-        width: 100%;
-        height: 100vh;
-    }
-
-    .img-main {
-        width: 100%;
-        height: 100%;
-        list-style: none;
-
-        background-image: url("../static/img/배경.png");
-        background-size: cover;
-        background-position: center;
-        overflow: auto;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        text-align: center;
-    }
-
-    .logo-box {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        text-align: center;
-    }
-
-
-    .img-logo {
-        width: 25%;
-        height: 350px;
-        margin: 0 auto;
-    }
-
-    .btn-div {
-        display: flex;
-        justify-content: space-evenly;
-    }
-
-    .btn-div > div {
-        width: 20%;
-        display: flex;
-        flex-direction: column;
-    }
-
-    .btn-div > div > p {
-        color: rgb(0, 0, 0);
-        font-weight: bolder;
-        font-size: 20px;
-        border: 3px solid rgb(255, 255, 255);
-        border-radius: 10px;
-        background-color: rgb(255, 255, 255);
-        width: 70%;
-        margin: 0 auto;
-    }
-
-    .btn-div > div > button :hover {
-        width: 50%;
-    }
-
-
-    .tem {
-        font-size: 20px;
-        font-weight: bolder;
-        color: rgb(0, 0, 0);
-    }
-
-
-    @media (max-width: 800px) {
-        .img-logo {
-            width: 50%;
-        }
-    }
-
-
-    @media (max-width: 600px) {
-        .img-logo {
-            width: 80%;
-        }
-
-        .btn-div > div > p {
-            width: 20%;
-            font-size: 15px;
-        }
-
-        .btn-div > div > button > img {
-            width: 100%;
-        }
-    }
 </style>
 
 <script>
@@ -152,18 +56,18 @@
 
         <div class="btn-div">
             <div>
-                <button class="btn" id="cam"><img onclick="location.href='/2PAGE'" src="/static/img/텐트.png">
+                <button class="btn" id="cam"><img onclick="location.href='/2PAGE.html'" src="/static/img/텐트.png">
                 </button>
                 <p class="name">글램핑, 캠핑</p>
             </div>
 
             <div>
-                <button class="btn" id="fas" onclick="location. href='/2PAGE'"><img src="/static/img/페스티벌.png"></button>
+                <button class="btn" id="fas" onclick="location. href='/2PAGE.html'"><img src="/static/img/페스티벌.png"></button>
                 <p class="name">페스티벌</p>
             </div>
 
             <div>
-                <button class="btn" id="trip" onclick="location. href='/2PAGE'"><img src="/static/img/여행.png"></button>
+                <button class="btn" id="trip" onclick="location. href='/2PAGE.html'"><img src="/static/img/여행.png"></button>
                 <p class="name">여행</p>
             </div>
 
