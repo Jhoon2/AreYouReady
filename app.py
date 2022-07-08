@@ -7,7 +7,7 @@ import certifi
 app = Flask(__name__)
 
 ca = certifi.where()
-client = MongoClient('mongodb+srv://test:sparta@cluster0.xaxuh.mongodb.net/?retryWrites=true&w=majority', tlsCAFile=ca)
+client = MongoClient('mongodb+srv://test:sparta@Cluster0.j0ygw.mongodb.net/?retryWrites=true&w=majority', tlsCAFile=ca)
 db = client.dbsparta
 
 @app.route('/')
@@ -55,6 +55,33 @@ def travel_write():
 def travel_read():
     travel_list = list(db.travels.find({},{'_id':False}))
     return jsonify({'travels': travel_list})
+
+@app.route("/travel/delete", methods=["POST"])
+def travel_delete():
+    num_receive = request.form['num_give']
+
+    db.travels.delete_one({'num': int(num_receive)})
+
+    all_list = list(db.travels.find({},{'_id':False}))
+    
+    reset_num = len(all_list)
+
+# all_list[x]['num'] = x + 1
+    
+    if reset_num > 1:
+        for x in range(int(num_receive), reset_num + 1):
+            a = x + 1
+            db.travels.update_one({'num': int(a)}, {'$set': {'num': x}})
+    elif reset_num == 1:
+        lastnum = 2
+        db.travels.update_one({'num': int(lastnum)}, {'$set': {'num': 1}})
+    
+    
+    #travel collection안에 length가 1보다 클경우는 num값을 length에 맞춰서 순차적으로 지정해주었습니다. 이유는 하나만 남겼을때는 num값을 1로 지정해줄수가 없고 2로 남아있는데
+    #length가 1일경우에는 num값이 2인곳을 찾아 1로 바꾸어줘 최종적으로 하나 남았을때의 num값은 1입니다.
+      
+
+    return jsonify({'numdone': str(num_receive) + "삭제완료"})
 
 
 @app.route("/supplies", methods=["POST"])
@@ -138,7 +165,7 @@ def comment_post():
 
 
 if __name__ == '__main__':
-    app.run('0.0.0.0', port=5000, debug=True)
+    app.run('0.0.0.0', port=3000, debug=True)
 
 
 
