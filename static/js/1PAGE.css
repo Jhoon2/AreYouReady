@@ -1,0 +1,323 @@
+::-webkit-scrollbar {
+  display: none;
+  }
+
+@font-face {
+  font-family: -윤고딕330;
+  src: url("/static/font/윤고딕330.woff") format('woff');
+}
+
+* {
+  font-family: -윤고딕330;
+}
+
+.title-box {
+  width: 100%;
+}
+
+.img-box {
+  width: 100%;
+  height: 100vh;
+}
+
+.img-main {
+  width: 100%;
+  height: 100%;
+  list-style: none;
+
+  background-image: url("../img/배경.png");
+  background-size: cover;
+  background-position: center;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.info-btn-div {
+  width:100%;
+  padding-left:400px;
+
+}
+
+.info-btn {
+  width:10%;
+  padding: 10px;
+  background-color: rgb(29, 108, 117);
+  color: white;
+  border-radius: 15px;
+  /* writing-mode: vertical-rl;
+  text-orientation: mixed; */
+  border: none;
+}
+
+
+.logo-box {
+width: 100%;
+display: flex;
+justify-content: center;
+flex-direction: column;
+text-align: center;
+}
+
+.img-logo {
+  width: 25%;
+  height: 350px;
+  margin: 0 auto;
+}
+
+.btn-div {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.btn-div>div {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+}
+
+.btn-div>div>p {
+  color: rgb(0, 0, 0);
+  font-weight: bolder;
+  font-size: 20px;
+  border: 3px solid rgb(255, 255, 255);
+  border-radius: 10px;
+  background-color: rgb(255, 255, 255);
+  width: 70%;
+  margin: 0 auto;
+}
+
+.btn-div>div>button :hover {
+  width: 50%;
+
+}
+
+/* .list-group:hover {
+transform: translate( 50px, 50% )
+} */
+
+.tem {
+  font-size: 20px;
+  font-weight: bolder;
+  color: rgb(0, 0, 0);
+}
+
+.list-group {
+  width: 330px;
+  margin-left: -140px;
+  margin-top: 5px;
+  opacity: 0;
+  transition: all 0.5s;
+  visibility: hidden;
+  cursor: pointer;
+}
+
+#navMBtn>a {
+  display: block;
+  /* padding: 5px; */
+  /* margin-top:0.5px; */
+}
+
+#navMBtn>a>span {
+  width: 60%;
+  /* height: 1px; */
+  background: rgb(0, 0, 0);
+  display: block;
+  /* margin-top: 5.5px; */
+  margin-left: 10px;
+  border: solid 2px rgb(0, 0, 0);
+}
+
+#navMBtn {
+  display: none;
+  width: 50px;
+  height: 60px;
+  background-color: rgb(201, 225, 251);
+  border-radius: 10px;
+}
+
+
+
+.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.info-img {
+  width:100%;
+  display: flex;
+  justify-content: space-evenly;
+  margin-top:200px;
+  padding-bottom: 200px;
+}
+
+.info-img img {
+  width:350px;
+  height:350px;
+}
+
+@media (max-width: 1400px) {
+  .img-logo {
+      width: 50%;
+  }
+
+  .info-img img {
+    width:280px;
+    height:280px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .img-logo {
+      width: 50%;
+  }
+
+  .info-img img {
+    width:220px;
+    height:220px;
+  }
+}
+
+
+@media (max-width: 800px) {
+  .img-logo {
+      width: 50%;
+  }
+
+  .info-img {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .info-img img {
+    margin-top:50px;
+  }
+
+}
+
+
+@media (max-width: 600px) {
+  .img-logo {
+      width: 60%;
+  }
+
+  .logo-box {
+      margin-top: -350px;
+
+  }
+
+  .btn-div>div>p {
+      width: 20%;
+      font-size: 15px;
+  }
+
+  .btn-div>div>button>img {
+      width: 100%;
+  }
+
+  #navMBtn {
+      display: block;
+  }
+
+
+  .btn-div div:nth-child(2) {
+      display: none;
+  }
+
+  .btn-div div:nth-child(3) {
+      display: none;
+  }
+
+  .btn-div div:nth-child(4) {
+      display: none;
+  }
+
+  .btn-div div:nth-child(5) {
+      display: none;
+  }
+
+  .btn-div div:nth-child(6) {
+      display: none;
+  }
+
+  .info-btn-div {
+    line-height: 30px;
+    z-index: 5;
+    padding-left: 300px;
+  }
+
+  .info-btn {
+    padding-right:25px;
+    
+  }
+
+
+}
+
+
+
+
+
+
+
+
+
+.menu-trigger {
+  margin-right: 70px;
+  margin-bottom: 50px;
+}
+
+.menu-trigger,
+.menu-trigger span {
+  display: inline-block;
+  transition: all .4s;
+  box-sizing: border-box;
+}
+
+.menu-trigger {
+  position: relative;
+  width: 50px;
+  height: 44px;
+  margin-top: 9px;
+  cursor: pointer;
+}
+
+.menu-trigger span {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background-color: rgb(0, 0, 0);
+  border-radius: 4px;
+}
+
+.menu-trigger span:nth-of-type(1) {
+  top: 0;
+}
+
+.menu-trigger span:nth-of-type(2) {
+  top: 20px;
+}
+
+.menu-trigger span:nth-of-type(3) {
+  bottom: 0;
+}
+
+/* type-01 */
+/* 중앙 라인이 고정된 자리에서 투명하게 사라지며 상하라인 회전하며 엑스자 만들기 */
+.menu-trigger.active-1 span:nth-of-type(1) {
+  -webkit-transform: translateY (20px) rotate (-45deg);
+  transform: translateY(20px) rotate(-45deg);
+}
+
+.menu-trigger.active-1 span:nth-of-type(2) {
+  opacity: 0;
+}
+
+.menu-trigger.active-1 span:nth-of-type(3) {
+  -webkit-transform: translateY(-20px) rotate(45deg);
+  transform: translateY(-20px) rotate(45deg);
+}

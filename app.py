@@ -7,20 +7,25 @@ import certifi
 app = Flask(__name__)
 
 ca = certifi.where()
-client = MongoClient('mongodb+srv://test:sparta@cluster0.xaxuh.mongodb.net/?retryWrites=true&w=majority', tlsCAFile=ca)
+client = MongoClient(
+    'mongodb+srv://test:sparta@cluster0.xaxuh.mongodb.net/?retryWrites=true&w=majority', tlsCAFile=ca)
 db = client.dbsparta
+
 
 @app.route('/')
 def home():
     return render_template('1PAGE.html')
 
+
 @app.route('/2PAGE')
 def page_1():
     return render_template('2PAGE.html')
 
+
 @app.route('/1PAGE')
 def page_2():
     return render_template('1PAGE.html')
+
 
 @app.route("/travel", methods=["POST"])
 def travel_write():
@@ -53,7 +58,7 @@ def travel_write():
 
 @app.route("/travel", methods=["GET"])
 def travel_read():
-    travel_list = list(db.travels.find({},{'_id':False}))
+    travel_list = list(db.travels.find({}, {'_id': False}))
     return jsonify({'travels': travel_list})
 
 
@@ -71,7 +76,8 @@ def supplies_write():
         'comment': ''
     }
 
-    db.travels.update_one({'num': int(num_receive)}, {'$addToSet': {'supplieslist': doc}})
+    db.travels.update_one({'num': int(num_receive)}, {
+                          '$addToSet': {'supplieslist': doc}})
     return jsonify({'msg': '준비물 저장 완료!', 'num': int(num_receive), 'index': count})
 
 
@@ -82,7 +88,6 @@ def supplies_read():
     return jsonify({'msg': '완료!!', 'modal-title': travel_list['comment'], 'supplieslist': travel_list['supplieslist']})
 
 
-
 @app.route("/supplies/done", methods=["POST"])
 def supplies_done():
     index_receive = request.form['index_give']
@@ -91,19 +96,21 @@ def supplies_done():
     travel_list = db.travels.find_one({'num': int(num_receive)})
 
     if travel_list['supplieslist'][int(index_receive) - 1]['done'] == 0:
-        db.travels.update_one({"$and": [{'num': int(num_receive)}, {'supplieslist.index': int(index_receive)}]}, {'$set': {'supplieslist.$.done': 1}})
+        db.travels.update_one({"$and": [{'num': int(num_receive)}, {
+                              'supplieslist.index': int(index_receive)}]}, {'$set': {'supplieslist.$.done': 1}})
     else:
-        db.travels.update_one({"$and": [{'num': int(num_receive)}, {'supplieslist.index': int(index_receive)}]}, {'$set': {'supplieslist.$.done': 0}})
+        db.travels.update_one({"$and": [{'num': int(num_receive)}, {
+                              'supplieslist.index': int(index_receive)}]}, {'$set': {'supplieslist.$.done': 0}})
     return jsonify({'msg': '체크 완료!', 'supplieslist': travel_list['supplieslist']})
     # return jsonify({'msg': '체크 완료!', 'done': supplies_num['done']})
-
 
 
 @app.route("/supplies/delete", methods=["POST"])
 def supplies_delete():
     index_receive = request.form['index_give']
     num_receive = request.form['currentNum_give']
-    db.travels.update_one({'num': int(num_receive)}, {'$pull': {'supplieslist': {'index': int(index_receive)}}})
+    db.travels.update_one({'num': int(num_receive)}, {
+                          '$pull': {'supplieslist': {'index': int(index_receive)}}})
 
     travel_list = db.travels.find_one({'num': int(num_receive)})
     print(travel_list['supplieslist'])
@@ -112,19 +119,20 @@ def supplies_delete():
     for x in range(reset_num):
         travel_list['supplieslist'][x]['index'] = (x + 1)
 
-    db.travels.update_one({'num': int(num_receive)}, {'$set': {'supplieslist': []}})
-    db.travels.update_one({'num': int(num_receive)}, {'$addToSet': {'supplieslist': {'$each': travel_list['supplieslist']}}})
+    db.travels.update_one({'num': int(num_receive)}, {
+                          '$set': {'supplieslist': []}})
+    db.travels.update_one({'num': int(num_receive)}, {'$addToSet': {
+        'supplieslist': {'$each': travel_list['supplieslist']}}})
     return jsonify({'msg': '삭제 완료!'})
-
 
 
 @app.route("/supplies/all_delete", methods=["POST"])
 def delete_all():
     num_receive = request.form['currentNum_give']
 
-    db.travels.update_one({'num': int(num_receive)}, {'$set': {'supplieslist': []}})
+    db.travels.update_one({'num': int(num_receive)}, {
+                          '$set': {'supplieslist': []}})
     return jsonify({'msg': '전체 삭제 완료!'})
-
 
 
 @app.route("/supplies/comment", methods=["POST"])
@@ -132,13 +140,11 @@ def comment_post():
     comment_receive = request.form['comment_give']
     num_receive = request.form['num_give']
     supplies_num = db.supplies.find_one({'num': int(num_receive)})
-    db.supplies.update_one({'num': int(num_receive)}, {'$set': {'comment': comment_receive}})
+    db.supplies.update_one({'num': int(num_receive)}, {
+                           '$set': {'comment': comment_receive}})
     supplies_list = list(db.supplies.find({}, {'_id': False}))
     return jsonify({'msg': '등록 완료!', 'supplies': supplies_list})
 
 
 if __name__ == '__main__':
-    app.run('0.0.0.0', port=3001, debug=True)
-
-
-
+    app.run('0.0.0.0', port=5000, debug=True)

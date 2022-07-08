@@ -1,0 +1,176 @@
+@font-face {
+  font-family: -BMEULJIROTTF;
+  src: url("/static/font/BMEULJIROTTF.woff") format('woff');
+}
+
+* {
+  font-family: BMEULJIROTTF;
+}
+
+body {
+  margin: 0;
+}
+
+div {
+  box-sizing: border-box;
+}
+
+.mytitle {
+  width: 100%;
+  height: 550px;
+  border-radius: 0px 0px 15px 15px;
+
+  background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://a.cdn-hotels.com/gdcs/production189/d714/2c6115c1-182b-4244-af22-3df48215b86b.jpg');
+  background-position: center;
+  background-size: cover;
+
+  color: white;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+.logo-div>button {
+  width: 200px;
+  height: 50px;
+
+  background-color: transparent;
+  color: white;
+
+  border-radius: 50px;
+  border: 1px solid white;
+
+  margin: 0 auto;
+  margin-top: 40px;
+}
+
+.logo-div>button:hover {
+  border: 2px solid white;
+}
+
+.logo-div {
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 
+#img-logo > img {
+z-index: 5;
+} */
+
+.mycomment {
+  color: gray;
+}
+
+
+.mycards {
+  margin: 20px auto 0px auto;
+  width: 95%;
+  max-width: 1200px;
+}
+
+.mypost {
+  width: 95%;
+  max-width: 700px;
+  margin: 20px auto 0px auto;
+  padding: 20px;
+  box-shadow: 0px 0px 3px 0px gray;
+
+  display: none;
+}
+
+.mybtns {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 20px;
+}
+
+.mybtns>button {
+  margin-right: 10px;
+}
+
+.card-info {
+  color: white;
+  position: absolute;
+}
+
+.card-img {
+  position: center;
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+
+}
+
+.card-img-overlay {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+
+  background-color: black;
+}
+
+.card:hover .card-img-overlay {
+  opacity: 0.7;
+  transition: all 1.0s;
+  cursor: pointer;
+}
+
+
+/*supplies!!!!!!!*/
+#suppliesInput {
+  display: none
+}
+
+.mybox {
+  width: 95%;
+  max-width: 700px;
+  padding: 20px;
+  box-shadow: 0px 0px 10px 0px lightblue;
+  margin: 20px auto;
+}
+
+.mysupplies {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mysupplies>input {
+  width: 70%;
+}
+
+.mybox>li {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 10px;
+  min-height: 48px;
+}
+
+.mybox>li>h2 {
+  max-width: 75%;
+  font-size: 20px;
+  font-weight: 500;
+  margin-right: auto;
+  margin-bottom: 0px;
+}
+
+.mybox>li>h2.done {
+  text-decoration: line-through;
+  color: grey;
+
+}
