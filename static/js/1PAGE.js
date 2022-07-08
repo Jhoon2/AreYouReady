@@ -39,3 +39,10 @@ burger.each(function (index) {
       $(this).toggleClass('active-' + (index + 1));
   })
 });
+
+
+const btn = document.querySelector('.info-btn-div');
+
+ btn.addEventListener('click', () => {
+   document.querySelector('.info-img').scrollIntoView();
+ })
