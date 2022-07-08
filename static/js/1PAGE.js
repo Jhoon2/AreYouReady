@@ -7,6 +7,7 @@ $(document).ready(function () {
       success: function (response) {
           let temp = response['temp']
           $('#temp').text(temp)
+          $('#temp-img').attr('src', response['icon'])
       }
   })
 

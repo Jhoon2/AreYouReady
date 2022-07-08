@@ -32,6 +32,10 @@ div {
   justify-content: center;
 }
 
+.theme_title {
+  padding-top: 20px;
+  text-align: center;
+}
 
 
 .logo-div>button {
