@@ -48,10 +48,10 @@ function listing() {
         <div class="card">
           <img src="${image}" class="card-img">
           <p class="card-text">${comment}</p>
-          <div class="card-img-overlay" >
+          <div class="card-img-overlay">
               <div class="card-info">
-                <h5 class="card-title">${title}</h5>
-                <p class="card-text">${desc}</p>
+                <h5 class="card-title" onclick="modal_input_box(${num})" data-bs-toggle="modal" data-bs-target="#mymodal">${title}</h5>
+                <p class="card-text" onclick="modal_input_box(${num})" data-bs-toggle="modal" data-bs-target="#mymodal">${desc}</p>
                 <p class="card-text" onclick="modal_input_box(${num})" data-bs-toggle="modal" data-bs-target="#mymodal">${desc}</p>
                       </div>
                       <div class="trashcan-div">
